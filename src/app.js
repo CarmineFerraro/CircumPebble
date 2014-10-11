@@ -20,15 +20,43 @@ main.on('click', 'select', function(e) {
   menu.item(0, 4, { title: "NULL", subtitle: 'Non disp' });
   menu.item(0, 5, { title: "NULL", subtitle: 'Non disp' });
   var ajax = require('ajax');
-ajax({ url: 'http://students.uniparthenope.it/~0124000464/pebble/result.json', type: 'json' },
+ajax({ url: 'http://students.uniparthenope.it/~0124000464/pebble/dati.php', type: 'json' },
   function(data) {
+    if (data.uno.bin==" "){
+      menu.item(0, 1, { title: data.uno.dest, subtitle:  data.uno.ora + " Binario: N.D."});
+    }
+    else{
     menu.item(0, 1, { title: data.uno.dest, subtitle:  data.uno.ora + " Binario: "+ data.uno.bin });
+    }
+    if (data.due.bin==" "){
+    menu.item(0, 2, { title: data.due.dest, subtitle:  data.due.ora + " Binario: N.D."});
+    }
+    else{
     menu.item(0, 2, { title: data.due.dest, subtitle:  data.due.ora + " Binario: "+ data.due.bin });
-    menu.item(0, 3, { title: data.tre.dest, subtitle:  data.tre.ora + " Binario: "+ data.tre.bin });
-    menu.item(0, 4, { title: data.quattro.dest, subtitle:  data.quattro.ora + " Binario: "+ data.quattro.bin});
-    menu.item(0, 5, { title: data.cinque.dest, subtitle: data.cinque.ora + " Binario: "+ data.cinque.bin });
+    }
+    if(data.tre.bin ==" "){
+      menu.item(0, 3, { title: data.tre.dest, subtitle:  data.tre.ora + " Binario: N.D."});
+    }
+    else{
+      menu.item(0, 3, { title: data.tre.dest, subtitle:  data.tre.ora + " Binario: "+ data.tre.bin });
+    }
+    if(data.quattro.bin ==" "){
+       menu.item(0, 4, { title: data.quattro.dest, subtitle:  data.quattro.ora + " Binario: N.D."});
+    }
+    else{
+       menu.item(0, 4, { title: data.quattro.dest, subtitle:  data.quattro.ora + " Binario: "+ data.quattro.bin});
+
+    }
+   if(data.cinque.bin ==" "){
+         menu.item(0, 5, { title: data.cinque.dest, subtitle: data.cinque.ora + " Binario: N.D." });
+   }
+    else{
+        menu.item(0, 5, { title: data.cinque.dest, subtitle: data.cinque.ora + " Binario: "+ data.cinque.bin });  
+    }
+
   });
   menu.show();
 });
+  
 
 
